@@ -1,0 +1,8 @@
+@import '../../styles/variables';
+
+.container {
+  width: 100%;
+  &__img {
+    padding-bottom: 30px;
+  }
+}

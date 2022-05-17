@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.container {
+  /* padding-bottom: $padding-30; */
+  width: 100%;
+  img {
+    padding-bottom: $padding-30;
+  }
+  &__button {
+    padding: 0 $padding-30;
+  }
+}

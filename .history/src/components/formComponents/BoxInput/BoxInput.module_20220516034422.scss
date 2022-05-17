@@ -1,0 +1,11 @@
+@import '../../../styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  > label {
+    font-size: $fontSize-12;
+    color: $darkGray;
+  }
+}

@@ -1,0 +1,16 @@
+
+//FLEX
+@mixin flexRow {
+  display: flex;
+  flex-direction: row;
+}
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+//BUTTON
+@mixin primaryButtonCircle {
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+}

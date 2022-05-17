@@ -1,0 +1,32 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixin';
+
+.container {
+  align-items: flex-start;
+  border-bottom: 1px solid $mediumGrey;
+  @include flexColumn;
+  > label {
+    color: $darkGrey;
+    font-size: $fontSize-12;
+    @include fontBarlow400;
+  }
+  &__inputBox {
+    @include fontBarlow400;
+    @include flexRow;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+    width: 539px;
+    > input {
+      border: 2px solid red;;
+      color: $liteGrey;
+      font-size: $fontSize-18;
+      width: 100%;
+      padding: 7px 0;;
+    }
+    > img {
+      border: 2px solid navy;
+      padding-left: 10px;
+    }
+  }
+}

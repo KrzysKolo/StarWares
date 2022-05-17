@@ -1,0 +1,8 @@
+@import '../../../styles/variables';
+
+.container {
+  background-color: $primaryColor;
+  cursor: pointer;
+  height: 33px;
+  width: 160px;
+}

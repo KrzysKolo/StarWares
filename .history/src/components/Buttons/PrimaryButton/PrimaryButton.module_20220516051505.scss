@@ -1,0 +1,33 @@
+@import './../../../styles/variables';
+@import './../../../styles/mixin';
+
+.container {
+  align-items: center;
+  background-color: $white;
+  border: none;
+  border-radius: 4px;
+  box-shadow:rgba(196, 196, 196, 0.2);
+  cursor: pointer;
+  justify-content: space-between;
+  padding: 0 15px;
+  width: 100%;
+  @include flexRow;
+  &__text {
+    color: $primaryColor;
+    font-family: Barlow;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 14px 0;
+  }
+  &__circlePrimary {
+    align-items: center;
+    background-color: $primaryColor-300;
+    justify-content: center;
+    @include primaryButtonCircle;
+    @include flexRow;
+  }
+  &__circleSecondary {
+    @include primaryButtonCircle;
+     background-color: $secondaryCircleColor;
+  }
+}

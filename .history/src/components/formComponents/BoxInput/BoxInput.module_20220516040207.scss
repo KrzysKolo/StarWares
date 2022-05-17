@@ -1,0 +1,23 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixin';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  > label {
+    color: $darkGrey;
+    font-size: $fontSize-12;
+    @include fontBarlow400;
+  }
+  &__inputBox {
+    border: transparent;
+    color: $liteGrey;
+    font-size: $fontSize-18;
+    @include fontBarlow400;
+    > input {
+      border: none;
+      width: 100%;
+    }
+  }
+}

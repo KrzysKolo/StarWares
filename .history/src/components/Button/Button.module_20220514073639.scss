@@ -1,0 +1,17 @@
+@import './../../styles/variables';
+@import './../../styles/mixin';
+
+.container {
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0 15px;
+  width: 100%;
+  @include flexRow;
+  justify-content: space-around;
+  border: 2px solid red;
+  &__circle {
+    background-color: $primaryColor;
+    @include primaryButtonCircle;
+
+  }
+}
