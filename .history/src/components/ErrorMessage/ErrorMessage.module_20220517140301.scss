@@ -1,0 +1,14 @@
+@import './../../styles/variables';
+@import './../../styles/mixin';
+
+.container {
+  border: 1px solid $errorRed;
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: rgba(196, 196, 196, 0.5);
+  margin-right: 50px;
+  padding: 9px;
+  width: 96%;
+  z-index: 9999999;
+  margin-bottom: -50%;
+}

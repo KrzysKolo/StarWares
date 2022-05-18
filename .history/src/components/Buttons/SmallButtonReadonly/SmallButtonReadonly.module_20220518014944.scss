@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixin';
+
+.container {
+  display: disabled;
+  align-items: center;
+  background-color: $primaryColor-200;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  &__disabled{
+  height: 33px;
+  justify-content: center;
+  letter-spacing: 5%;
+  text-transform: uppercase;
+  transition: all .2ms ease-in-out;
+  width: 160px;
+  @include flexRow;
+  @include fontBarlow700;
+  &:hover {
+    background-color: $primaryColor-300;
+  }
+ }
+}

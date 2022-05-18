@@ -1,0 +1,39 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixin';
+
+.container {
+  align-items: flex-start;
+  background-color: $white;;
+  border-bottom: 1px solid $mediumGrey;
+  @include flexColumn;
+  > &__error {
+    color: $errorRed;
+    font-size: $fontSize-12;
+    background-color: $errorRed;
+    @include fontBarlow400;
+  }
+  > label {
+    color: $darkGrey;
+    font-size: $fontSize-12;
+    @include fontBarlow400;
+  }
+  &__inputBox {
+    @include fontBarlow400;
+    @include flexRow;
+      width: 539px;
+    > input {
+      border: none;
+      color: $veryDarkGrey;
+      font-size: $fontSize-18;
+      outline: none;
+      padding: 7px 0;;
+      width: 100%;
+      &::placeholder {
+        color: $liteGrey;
+      }
+    }
+    > img {
+      padding-left: 10px;
+    }
+  }
+}

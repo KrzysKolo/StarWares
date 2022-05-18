@@ -1,0 +1,26 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixin';
+
+.container {
+
+  &__pure-button-disabled {
+
+  align-items: center;
+  background-color: #E0E6EE;
+  border: none;
+  color: $white;
+
+  height: 33px;
+  width: 160px;
+  &::disabled {
+  cursor: pointer;
+  justify-content: center;
+  letter-spacing: 5%;
+  text-transform: uppercase;
+  transition: all .2ms ease-in-out;
+
+  @include flexRow;
+  @include fontBarlow700;
+  }
+ }
+}
