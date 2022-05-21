@@ -1,0 +1,67 @@
+@import './../../../styles/variables';
+@import './../../../styles/mixin';
+
+.container {
+  border: 2ps solid red;
+  flex-wrap: wrap;
+  padding: 13px 0 18px 0;
+  max-width: 540px;
+  @include flexRow;
+  &__aaa{
+    align-items: space-between;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 13px;
+    justify-content: space-between;
+    margin-right: 18px;
+    transition: all 5ms ease-in-out;
+    width: 13px;
+    &:hover {
+      transform: rotate(-375deg);
+    }
+
+   }
+   &__line1 {
+    width: 110%;
+    height: 2px;
+    background-color: black;
+    opacity: 1;
+    transform: rotate(45deg) translate(4px, 4px);
+
+    }
+   &__line2 {
+    width: 110%;
+    height: 2px;
+    background-color: green;
+
+    transform: rotate(-45deg) translate(4px, -4px);
+
+
+   }
+  &__listItem{
+    align-items: center;
+    border: 1px solid $mediumGrey;
+    border-radius: 18px;
+    height: 32px;
+    justify-content: space-between;
+    min-width: 122px;
+    margin-top: 5px;
+    margin-right: 5px;
+    @include flexRow;
+    > h3 {
+      font-family: Barlow;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 0;
+      margin-left: 18px;
+      margin-right: 14px;
+    }
+
+
+  }
+
+
+
+}

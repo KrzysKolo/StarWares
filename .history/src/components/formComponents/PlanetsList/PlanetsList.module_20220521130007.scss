@@ -1,0 +1,47 @@
+@import './../../../styles/variables';
+@import './../../../styles/mixin';
+
+.container {
+  padding: 18px 0;
+  max-width: 540px;
+  flex-wrap: wrap;
+  @include flexRow;
+  border: 1px solid green;
+  &__listItem{
+    align-items: center;
+    border: 1px solid $mediumGrey;
+    border-radius: 18px;
+    height: 32px;
+    justify-content: space-between;
+    min-width: 122px;
+    margin: 3px 5px 0 0;
+    border: 1px solid red;
+    @include flexRow;
+    > h3 {
+      font-family: Barlow;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px 0;
+      margin-left: 18px;
+      margin-right: 14px;
+    }
+    > div {
+      align-items: center;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      height: 13px;
+      justify-content: center;
+      margin-right: 18px;
+      transition: all 2ms ease-in-out;
+      width: 13px;
+      &:hover{
+        transform: rotate(-90deg);
+      }
+    }
+
+  }
+
+
+
+}

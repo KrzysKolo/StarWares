@@ -1,0 +1,21 @@
+@import './../../../styles/variables';
+@import './../../../styles/mixin';
+
+.container {
+  height: 32px;
+  width: 122px;
+  border: 1px solid $mediumGrey;
+  border-radius: 18px;
+  @include flexRow;
+  justify-content: space-around;
+  align-items: center;
+  margin:18px 0;
+  > h3 {
+    font-size: 16px;
+    font-family: Barlow;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: 1px solid red;
+  }
+
+}

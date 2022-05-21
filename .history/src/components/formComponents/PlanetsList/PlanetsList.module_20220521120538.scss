@@ -1,0 +1,12 @@
+@import './../../../styles/variables';
+@import './../../../styles/mixin';
+
+.container {
+  height: 32px;
+  width: 122px;
+  border-radius: 18px;
+  @include flexRow;
+  justify-content: center;
+  align-items: center;
+
+}
