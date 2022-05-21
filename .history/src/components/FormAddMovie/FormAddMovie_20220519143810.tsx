@@ -24,9 +24,9 @@ const FormAddMovie: React.FC = () => {
   const [titleMovie, setTitleMovie] = useState<string>("");
   const [searchText, setSearchText] = useState<string>('');
   const [suggestions, setSuggestions] = useState<Planet[]>([]);
-  const [planetsList, setPlanetsList] = useState<Planet[]>([]);
+  const [planetsList, setPlanetsList] = useState<string[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
-  let TabMatches: Planet[] | any = [];
+  let Tab: Planet[] = []
 
 
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -51,7 +51,8 @@ const FormAddMovie: React.FC = () => {
     const getPalents = async () => {
       try {
         const planets = await getStarWaresPlanets();
-        dispatch(getPlanetsApi(planets));
+        console.log(planets.data.results);
+        dispatch(getPlanetsApi(planets.data.results));
       }
       catch {
         console.log("error")
@@ -67,19 +68,21 @@ const FormAddMovie: React.FC = () => {
       matches = planets.filter(planet => {
         const regex = new RegExp(`^${value}`, 'gi');
         return planet.name.match(regex)
-      });
-
-      TabMatches.push(matches)
+      })
       setSuggestions(matches);
-      setPlanetsList(TabMatches);
     }
+
     setSearchText(value);
+    setPlanetsList([...Tab, value])
    };
   const suggestionSelected = (value: React.SetStateAction<string | any>) => {
     setSearchText(value);
+    setPlanetsList(value);
     setSuggestions([])
   };
-  console.log(planetsList)
+  console.log(Tab)
+  console.log(suggestions);
+  console.log(planetsList);
   return (
     <>
       {_stateWindowAddMovie &&
@@ -98,9 +101,6 @@ const FormAddMovie: React.FC = () => {
               {
                 isError && <ErrorMessage message="Movie tittle name must start with a capital letter." />
               }
-              {
-                planetsList && planetsList.map(item => <div>{item.name}</div>)
-              }
 
               <BoxSearchInput
                 label="Add Planet"
@@ -111,8 +111,9 @@ const FormAddMovie: React.FC = () => {
                 altPhoto="Search" />
             </div>
             <ul className="suggestion-wrapper">
-              {suggestions
-                && suggestions.map((item, i) => <li className="suggestion" key={i} onClick={() => suggestionSelected(item.name)}>{item.name}</li>)}
+              { suggestions && suggestions.map((item, i) => <li className="suggestion" key={i} onClick={() => suggestionSelected(item.name)}
+
+              >{item.name}</li>)}
             </ul>
             { isError ? <SmallButtonReadonly title='Add movie' /> : <SmallButton title="Add movie" />}
 

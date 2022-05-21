@@ -7,7 +7,7 @@ export const getStarWaresPlanets = async () => {
   let response: Response;
   try {
     do {
-      response = (await axiosClient.get(`/planets/?page=${counter++}`)).data;
+      response = (await axiosClient.get(`/people/?page=${counter++}`)).data;
       planets.push(...response.results)
 
     } while (response.next);
@@ -16,4 +16,7 @@ export const getStarWaresPlanets = async () => {
     planets.splice(0, planets.length);
   }
   return planets;
+
+
+
 };

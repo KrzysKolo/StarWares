@@ -14,9 +14,3 @@ export interface Planet {
   created: string,
   edited: string,
 }
-export interface Response {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Planet[];
-}

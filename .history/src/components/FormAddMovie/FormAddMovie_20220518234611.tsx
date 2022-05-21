@@ -18,15 +18,15 @@ const style = bemCssModules(FormAddMovieStyles);
 const FormAddMovie: React.FC = () => {
 
   const _stateWindowAddMovie = useSelector(stateWindowAddMovie);
-  const planets = useSelector(getAllPlanetsApi)
+  const _planets = useSelector()
 
 
   const [titleMovie, setTitleMovie] = useState<string>("");
+/*   const [planets, setPlanets] = useState<Planet[]>([]); */
   const [searchText, setSearchText] = useState<string>('');
-  const [suggestions, setSuggestions] = useState<Planet[]>([]);
-  const [planetsList, setPlanetsList] = useState<Planet[]>([]);
+  const [sugestions, setSugestions] = useState<Planet[]>([]);
+  const [planetsList, setPlanetsList] = useState<string[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
-  let TabMatches: Planet[] | any = [];
 
 
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -51,7 +51,9 @@ const FormAddMovie: React.FC = () => {
     const getPalents = async () => {
       try {
         const planets = await getStarWaresPlanets();
-        dispatch(getPlanetsApi(planets));
+        console.log(planets.data.results);
+        setPlanets(planets.data.results)
+        dispatch(getPlanetsApi(planets.data.results));
       }
       catch {
         console.log("error")
@@ -60,26 +62,20 @@ const FormAddMovie: React.FC = () => {
     getPalents()
   }, []);
 
-  const handleChangePlanets = (e: { target: { value: string | any; }; }) => {
-    const value = e.target.value;
+  const handleChangePlanets = (text: React.SetStateAction<string>) => {
     let matches: Planet[];
-    if (value.length > 0) {
+    if (searchText.length > 0) {
       matches = planets.filter(planet => {
-        const regex = new RegExp(`^${value}`, 'gi');
+        const regex = new RegExp(`${searchText}`, "gi");
         return planet.name.match(regex)
-      });
+      })
+      console.log('matches', matches)
+      setSugestions(matches);
 
-      TabMatches.push(matches)
-      setSuggestions(matches);
-      setPlanetsList(TabMatches);
     }
-    setSearchText(value);
-   };
-  const suggestionSelected = (value: React.SetStateAction<string | any>) => {
-    setSearchText(value);
-    setSuggestions([])
+    setSearchText(text);
   };
-  console.log(planetsList)
+
   return (
     <>
       {_stateWindowAddMovie &&
@@ -98,22 +94,17 @@ const FormAddMovie: React.FC = () => {
               {
                 isError && <ErrorMessage message="Movie tittle name must start with a capital letter." />
               }
-              {
-                planetsList && planetsList.map(item => <div>{item.name}</div>)
-              }
-
               <BoxSearchInput
                 label="Add Planet"
                 infoText='Search for the planet in database'
-                onChange={handleChangePlanets}
+                onChange={(e: { target: { value: string | any; }; }) => handleChangePlanets(e.target.value)}
                 value={searchText}
                 photo={search}
                 altPhoto="Search" />
             </div>
-            <ul className="suggestion-wrapper">
-              {suggestions
-                && suggestions.map((item, i) => <li className="suggestion" key={i} onClick={() => suggestionSelected(item.name)}>{item.name}</li>)}
-            </ul>
+            { sugestions && sugestions.map((sugestion, i) =>
+              <div key={i}>{sugestion.name}</div>
+            )}
             { isError ? <SmallButtonReadonly title='Add movie' /> : <SmallButton title="Add movie" />}
 
           </form>

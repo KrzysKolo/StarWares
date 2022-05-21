@@ -51,7 +51,7 @@ const FormAddMovie: React.FC = () => {
     const getPalents = async () => {
       try {
         const planets = await getStarWaresPlanets();
-        dispatch(getPlanetsApi(planets));
+        dispatch(getPlanetsApi(planets.data.results));
       }
       catch {
         console.log("error")

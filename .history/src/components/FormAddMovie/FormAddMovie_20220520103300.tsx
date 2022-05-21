@@ -26,7 +26,7 @@ const FormAddMovie: React.FC = () => {
   const [suggestions, setSuggestions] = useState<Planet[]>([]);
   const [planetsList, setPlanetsList] = useState<Planet[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
-  let TabMatches: Planet[] | any = [];
+/*   let Tab: Planet[] | any = [] */
 
 
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
@@ -51,7 +51,7 @@ const FormAddMovie: React.FC = () => {
     const getPalents = async () => {
       try {
         const planets = await getStarWaresPlanets();
-        dispatch(getPlanetsApi(planets));
+        dispatch(getPlanetsApi(planets.data.results));
       }
       catch {
         console.log("error")
@@ -68,7 +68,7 @@ const FormAddMovie: React.FC = () => {
         const regex = new RegExp(`^${value}`, 'gi');
         return planet.name.match(regex)
       });
-
+      let TabMatches: Planet[] | any = [];
       TabMatches.push(matches)
       setSuggestions(matches);
       setPlanetsList(TabMatches);
@@ -79,7 +79,6 @@ const FormAddMovie: React.FC = () => {
     setSearchText(value);
     setSuggestions([])
   };
-  console.log(planetsList)
   return (
     <>
       {_stateWindowAddMovie &&
