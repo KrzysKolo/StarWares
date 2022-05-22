@@ -12,26 +12,8 @@
     font-size: $fontSize-12;
     @include fontBarlow400;
   }
-  &__inputBoxFocus{
+  &__inputFocus{
     background-color: #FDFFE2;
-    @include fontBarlow400;
-    @include flexRow;
-      width: 539px;
-    > input {
-      background-color: #FDFFE2;
-      border: none;
-      color: $veryDarkGrey;
-      font-size: $fontSize-18;
-      outline: none;
-      padding: 7px 0;;
-      width: 100%;
-      &::placeholder {
-        color: $liteGrey;
-      }
-     }
-    > img {
-      padding-left: 10px;
-    }
   }
   &__inputBox {
     @include fontBarlow400;

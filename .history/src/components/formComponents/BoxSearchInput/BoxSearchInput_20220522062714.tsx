@@ -1,6 +1,8 @@
 import React from 'react';
 import { default as bemCssModules } from 'bem-css-modules';
 import { default as BoxSearchInputStyles } from './BoxSearchInput.module.scss';
+import { string } from 'yup';
+import SearchInput from '../SearchInput';
 
 const style = bemCssModules(BoxSearchInputStyles);
 

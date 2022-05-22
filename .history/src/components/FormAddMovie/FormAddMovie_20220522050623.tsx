@@ -80,10 +80,7 @@ const FormAddMovie: React.FC = () => {
   const removeItemPlanetsList = (value: string) => {
     setPlanetsList([...planetsList.filter((item) => item !== value)]);
   };
-  /* FOCUS */
-  const handleFocus = () => {
-    setIsFocus(!isFocus);
-  }
+
   return (
     <>
       {_stateWindowAddMovie &&
@@ -110,9 +107,6 @@ const FormAddMovie: React.FC = () => {
                 infoText='Search for the planet in database'
                 onChange={handleChangePlanets}
                 value={searchText}
-                onFocus={handleFocus}
-                onBlur={handleFocus}
-                isFocus={isFocus}
                 photo={search}
                 altPhoto="Search" />
               { suggestions.length > 0

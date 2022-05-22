@@ -95,6 +95,8 @@ const FormAddMovie: React.FC = () => {
                 infoText='Please enter the tittle of the movie'
                 value={titleMovie}
                 onChange={handleChangeValue}
+                onFocus={handleFocus}
+                isFocus={isFocus}
                 isErrorTitle={isError}
                 photo=""
                 altPhoto=""
@@ -110,9 +112,6 @@ const FormAddMovie: React.FC = () => {
                 infoText='Search for the planet in database'
                 onChange={handleChangePlanets}
                 value={searchText}
-                onFocus={handleFocus}
-                onBlur={handleFocus}
-                isFocus={isFocus}
                 photo={search}
                 altPhoto="Search" />
               { suggestions.length > 0

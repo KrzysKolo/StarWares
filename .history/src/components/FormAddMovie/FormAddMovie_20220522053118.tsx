@@ -111,7 +111,6 @@ const FormAddMovie: React.FC = () => {
                 onChange={handleChangePlanets}
                 value={searchText}
                 onFocus={handleFocus}
-                onBlur={handleFocus}
                 isFocus={isFocus}
                 photo={search}
                 altPhoto="Search" />

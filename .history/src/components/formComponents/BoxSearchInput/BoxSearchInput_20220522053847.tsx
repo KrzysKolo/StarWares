@@ -1,6 +1,7 @@
 import React from 'react';
 import { default as bemCssModules } from 'bem-css-modules';
 import { default as BoxSearchInputStyles } from './BoxSearchInput.module.scss';
+import { string } from 'yup';
 
 const style = bemCssModules(BoxSearchInputStyles);
 
@@ -20,31 +21,29 @@ const BoxSearchInput: React.FC<BoxInputProps> = ({ label, infoText, photo, altPh
   return (
     <div className={style()}>
       <label>{label}</label>
-      { isFocus
-        ? (<div className={style('inputBoxFocus')}>
-            <input
-              type='text'
-              placeholder='All'
-              value={value}
-              onChange={onChange}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              className={style(('inputFocus'))}
-            />
-            <img src={photo} alt={altPhoto} />
-          </div>)
-        : (<div className={style('inputBox')}>
-            <input
-              type='text'
-              placeholder={infoText}
-              value={value}
-              onChange={onChange}
-              onFocus={onFocus}
-            />
-            <img src={photo} alt={altPhoto} />
-          </div>)
+      <div className={style('inputBox inputFocus')}>
+        { isFocus
+          ? (<input
+            type='text'
+            placeholder='All'
+            value={value}
+            onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
+          />)
+          : (
+          <input
+            type='text'
+            placeholder={infoText}
+            value={value}
+            onChange={onChange}
+            onFocus={onFocus}
+          />)
         }
-     </div>
+        <img src={photo} alt={altPhoto} />
+      </div>
+
+    </div>
   )
 }
 
