@@ -55,7 +55,7 @@ const FormAddMovie: React.FC = () => {
     };
     getPalents()
   }, []);
-/* WYSZUKIWARKA PLANET */
+
   const handleChangePlanets = (e: { target: { value: string | any; }; }) => {
     const value = e.target.value;
     let matches: Planet[];
@@ -75,11 +75,14 @@ const FormAddMovie: React.FC = () => {
     setSearchText('');
     setSuggestions([])
   };
-    /* USUWANIE PLANET Z PLANETSlIST */
+    /* PLANET Z PLANETSlIST */
   const removeItemPlanetsList = (value: string) => {
-    setPlanetsList([...planetsList.filter((item) => item !== value)]);
-  };
+    console.log('usuwam')
 
+    setPlanetsList([...planetsList.filter((item, index) => item !== value)]);
+
+  };
+console.log(planetsList)
   return (
     <>
       {_stateWindowAddMovie &&

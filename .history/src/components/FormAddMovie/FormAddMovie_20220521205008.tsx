@@ -25,6 +25,8 @@ const FormAddMovie: React.FC = () => {
   const [planetsList, setPlanetsList] = useState<string[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
 
+
+
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setTitleMovie(e.target.value);
     if (titleMovie.length === 0) {
@@ -55,7 +57,7 @@ const FormAddMovie: React.FC = () => {
     };
     getPalents()
   }, []);
-/* WYSZUKIWARKA PLANET */
+
   const handleChangePlanets = (e: { target: { value: string | any; }; }) => {
     const value = e.target.value;
     let matches: Planet[];
@@ -67,18 +69,17 @@ const FormAddMovie: React.FC = () => {
       setSuggestions(matches);
     }
     setSearchText(value);
-  };
-
+   };
   const suggestionSelected = (value: React.SetStateAction<string | any>) => {
-    console.log(value)
-    setPlanetsList(prev => [...planetsList, value]);
-    setSearchText('');
-    setSuggestions([])
-  };
-    /* USUWANIE PLANET Z PLANETSlIST */
-  const removeItemPlanetsList = (value: string) => {
-    setPlanetsList([...planetsList.filter((item) => item !== value)]);
-  };
+     console.log(value)
+     setPlanetsList(prev =>[...planetsList,value]);
+     setSearchText('');
+     setSuggestions([])
+  }
+    /* PLANET Z PLANETSlIST */
+  const removeItemPlanetsList = (id: string | number | any) => {
+    setPlanetsList([...planetsList.filter(item => item.id !== id)]);
+  }
 
   return (
     <>
@@ -99,7 +100,7 @@ const FormAddMovie: React.FC = () => {
                 isError && <ErrorMessage message="Movie tittle name must start with a capital letter." />
               }
               {
-                planetsList && <PlanetsList planetsList={planetsList} remove={(value: string) => removeItemPlanetsList(value)} />
+                planetsList && <PlanetsList planetsList={planetsList} onClick={removeItemPlanetsList} />
               }
               <BoxSearchInput
                 label="Add Planet"

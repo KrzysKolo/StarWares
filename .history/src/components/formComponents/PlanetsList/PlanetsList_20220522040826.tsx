@@ -15,7 +15,7 @@ const PlanetsList: React.FC<PlanetsListProps> = ({ planetsList, remove }) => {
       (
         <div className={style('listItem')} key={i}>
           <h3>{item}</h3>
-          <div className={style('aaa')} onClick={()=>remove(item)}>
+          <div className={style('aaa')} onClick={(item)=>remove(item)}>
             <span className={style('line1')}></span>
             <span className={style('line2')}></span>
           </div>

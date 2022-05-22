@@ -13,9 +13,9 @@ const PlanetsList: React.FC<PlanetsListProps> = ({ planetsList, remove }) => {
     <article className={style()}>
       { planetsList.map((item, i) =>
       (
-        <div className={style('listItem')} key={i}>
+        <div className={style('listItem')} key={item}>
           <h3>{item}</h3>
-          <div className={style('aaa')} onClick={()=>remove(item)}>
+          <div className={style('aaa')} onClick={remove(item)}>
             <span className={style('line1')}></span>
             <span className={style('line2')}></span>
           </div>

@@ -6,16 +6,16 @@ const style = bemCssModules(PlanetsListStyles);
 
 export type PlanetsListProps = {
   planetsList: string[];
-  remove: React.MouseEventHandler<HTMLElement> | any;
+  onClick: React.MouseEventHandler<HTMLElement> | any;
 }
-const PlanetsList: React.FC<PlanetsListProps> = ({ planetsList, remove }) => {
+const PlanetsList: React.FC<PlanetsListProps> = ({ planetsList, onClick }) => {
   return (
     <article className={style()}>
       { planetsList.map((item, i) =>
       (
         <div className={style('listItem')} key={i}>
           <h3>{item}</h3>
-          <div className={style('aaa')} onClick={()=>remove(item)}>
+          <div className={style('aaa')} onClick={onClick(item)}>
             <span className={style('line1')}></span>
             <span className={style('line2')}></span>
           </div>

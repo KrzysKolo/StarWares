@@ -55,7 +55,7 @@ const FormAddMovie: React.FC = () => {
     };
     getPalents()
   }, []);
-/* WYSZUKIWARKA PLANET */
+
   const handleChangePlanets = (e: { target: { value: string | any; }; }) => {
     const value = e.target.value;
     let matches: Planet[];
@@ -75,9 +75,13 @@ const FormAddMovie: React.FC = () => {
     setSearchText('');
     setSuggestions([])
   };
-    /* USUWANIE PLANET Z PLANETSlIST */
+    /* PLANET Z PLANETSlIST */
   const removeItemPlanetsList = (value: string) => {
-    setPlanetsList([...planetsList.filter((item) => item !== value)]);
+    console.log(value)
+    console.log(...planetsList.filter((item, index) => item !== value))
+
+    setPlanetsList([...planetsList.filter((item, index) => item !== value)]);
+
   };
 
   return (
@@ -99,7 +103,7 @@ const FormAddMovie: React.FC = () => {
                 isError && <ErrorMessage message="Movie tittle name must start with a capital letter." />
               }
               {
-                planetsList && <PlanetsList planetsList={planetsList} remove={(value: string) => removeItemPlanetsList(value)} />
+                planetsList && <PlanetsList planetsList={planetsList} remove={removeItemPlanetsList} />
               }
               <BoxSearchInput
                 label="Add Planet"
