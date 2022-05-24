@@ -12,7 +12,6 @@ import { getStarWaresPlanets } from '../../services/planets/planets';
 import { getAllPlanetsApi, getPlanetsApi } from '../../features/planets/planetsSlice';
 import { Planet } from '../../models/Planet';
 import SuggestionsList from '../formComponents/SuggestionsList';
-import { useLocalStorage } from '../../services/costomHooks/useLocalStorage';
 
 const style = bemCssModules(FormAddMovieStyles);
 
@@ -26,7 +25,6 @@ const FormAddMovie: React.FC = () => {
   const [planetsList, setPlanetsList] = useState<string[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isFocus, setIsFocus] = useState<boolean>(false);
-  const [state, setState] = useLocalStorage("MyMovies",[] ) ;
 
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setTitleMovie(e.target.value);
@@ -43,39 +41,39 @@ const FormAddMovie: React.FC = () => {
       let tabPlanetInMyFilm: any = []; //tablica pomocnicza do której dodawane są całe planety po przefiltorwaniu po nazwie
       let planetsInMyMovie: [] | any = []; //tablica pomocnicza do której dodawane są planety jako tablice z obiektami z wymaganymi danymi
       planetsList.map(item => tabPlanetInMyFilm.push(planets.filter(planet => planet.name === item)));
-      tabPlanetInMyFilm.forEach((item: any) => {
-        const planet = {
-          name: item[0].name,
-          diameter: item[0].diameter,
-          rotation_period: item[0].rotation_period,
-          orbital_period: item[0].orbital_period,
-          gravity: item[0].gravity,
-          population: item[0].population,
-          climate: item[0].climate,
-          terrain: item[0].terrain,
-          surface_water: item[0].surface_water,
-          url: item[0].url,
-          created: item[0].created,
-          edited: item[0].edited,
-        };
-        planetsInMyMovie.push(planet)
-      }
-      );
+      tabPlanetInMyFilm.map((item: any) =>
+       planetsInMyMovie.push({
+        name: item.name,
+        diameter: item.diameter,
+        rotation_period: item.rotation_period,
+        orbital_period: item.orbital_period,
+        gravity: item.gravity,
+        population: item.population,
+        climate: item.climate,
+        terrain: item.terrain,
+        surface_water: item.surface_water,
+        url: item.url,
+        created: item.created,
+        edited: item.edited,
+      })
+    );
     const planetsTab = []; //tablica, która przechowuje planety w postaci obiektów
     for (const key in planetsInMyMovie) {
-      planetsTab.push({...planetsInMyMovie[key] })
+      planetsTab.push({...planetsInMyMovie[key], id: key })
     }
       let MyMovie = {
         title: titleMovie,
         planets: planetsTab,
         id: Date.now()+planetsInMyMovie.length,
       }
-      setState((prev: any) => [...state, MyMovie]);
+
+
+      console.log(MyMovie);
       setTitleMovie("");
+      console.log("zapisuje do localstorage");
       setPlanetsList([]);
     }
   };
-
   /* POBIERANIE PLANET */
   const dispatch = useDispatch();
   useEffect(() => {

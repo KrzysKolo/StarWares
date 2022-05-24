@@ -27,6 +27,7 @@ const FormAddMovie: React.FC = () => {
   const [isError, setIsError] = useState<boolean>(false);
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const [state, setState] = useLocalStorage("MyMovies",[] ) ;
+  let PlanetsInMyMovie: any = [];
 
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setTitleMovie(e.target.value);
@@ -70,10 +71,13 @@ const FormAddMovie: React.FC = () => {
         planets: planetsTab,
         id: Date.now()+planetsInMyMovie.length,
       }
-      setState((prev: any) => [...state, MyMovie]);
+      PlanetsInMyMovie.push([...PlanetsInMyMovie, MyMovie])
       setTitleMovie("");
+      console.log("zapisuje do localstorage");
       setPlanetsList([]);
     }
+    console.log(PlanetsInMyMovie)
+    setState(PlanetsInMyMovie);
   };
 
   /* POBIERANIE PLANET */
@@ -117,7 +121,7 @@ const FormAddMovie: React.FC = () => {
   const handleFocus = () => {
     setIsFocus(!isFocus);
   };
-
+console.log(PlanetsInMyMovie)
   return (
     <>
       {_stateWindowAddMovie &&

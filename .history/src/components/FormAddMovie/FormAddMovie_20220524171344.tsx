@@ -117,7 +117,7 @@ const FormAddMovie: React.FC = () => {
   const handleFocus = () => {
     setIsFocus(!isFocus);
   };
-
+console.log(PlanetsInMyMovie)
   return (
     <>
       {_stateWindowAddMovie &&

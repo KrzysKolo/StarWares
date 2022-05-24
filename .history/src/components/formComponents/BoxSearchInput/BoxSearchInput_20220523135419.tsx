@@ -44,7 +44,7 @@ const BoxSearchInput: React.FC<BoxInputProps> = ({ label, infoText, photo, altPh
           </div>)
         }
      </div>
-    )
-  }
+  )
+}
 
 export default BoxSearchInput;

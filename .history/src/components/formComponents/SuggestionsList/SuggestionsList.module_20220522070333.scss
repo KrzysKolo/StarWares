@@ -3,6 +3,7 @@
 
 .container {
   z-index: 999999!important;
+  position: relative;
   &__suggestionsWrapper {
   background-color: $white;
   border: 1px solid $borderGrey;

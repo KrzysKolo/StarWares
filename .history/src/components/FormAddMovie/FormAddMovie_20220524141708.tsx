@@ -28,6 +28,7 @@ const FormAddMovie: React.FC = () => {
   const [isFocus, setIsFocus] = useState<boolean>(false);
   const [state, setState] = useLocalStorage("MyMovies",[] ) ;
 
+
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setTitleMovie(e.target.value);
     if (titleMovie.length === 0) {
@@ -61,6 +62,7 @@ const FormAddMovie: React.FC = () => {
         planetsInMyMovie.push(planet)
       }
       );
+    console.log(tabPlanetInMyFilm)
     const planetsTab = []; //tablica, która przechowuje planety w postaci obiektów
     for (const key in planetsInMyMovie) {
       planetsTab.push({...planetsInMyMovie[key] })
@@ -70,12 +72,16 @@ const FormAddMovie: React.FC = () => {
         planets: planetsTab,
         id: Date.now()+planetsInMyMovie.length,
       }
-      setState((prev: any) => [...state, MyMovie]);
+      const PlanetsInMyMovie: any = [];
+      PlanetsInMyMovie.push({ MyMovie })
+      console.log(MyMovie);
+      console.log(PlanetsInMyMovie)
+      setState(PlanetsInMyMovie);
       setTitleMovie("");
+      console.log("zapisuje do localstorage");
       setPlanetsList([]);
     }
   };
-
   /* POBIERANIE PLANET */
   const dispatch = useDispatch();
   useEffect(() => {

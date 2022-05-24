@@ -29,6 +29,7 @@ const BoxSearchInput: React.FC<BoxInputProps> = ({ label, infoText, photo, altPh
               onChange={onChange}
               onFocus={onFocus}
               onBlur={onBlur}
+
             />
             <img src={photo} alt={altPhoto} />
           </div>)
@@ -44,7 +45,7 @@ const BoxSearchInput: React.FC<BoxInputProps> = ({ label, infoText, photo, altPh
           </div>)
         }
      </div>
-    )
-  }
+  )
+}
 
 export default BoxSearchInput;

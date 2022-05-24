@@ -12,7 +12,6 @@ import { getStarWaresPlanets } from '../../services/planets/planets';
 import { getAllPlanetsApi, getPlanetsApi } from '../../features/planets/planetsSlice';
 import { Planet } from '../../models/Planet';
 import SuggestionsList from '../formComponents/SuggestionsList';
-import { useLocalStorage } from '../../services/costomHooks/useLocalStorage';
 
 const style = bemCssModules(FormAddMovieStyles);
 
@@ -25,8 +24,7 @@ const FormAddMovie: React.FC = () => {
   const [suggestions, setSuggestions] = useState<Planet[]>([]);
   const [planetsList, setPlanetsList] = useState<string[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
-  const [isFocus, setIsFocus] = useState<boolean>(false);
-  const [state, setState] = useLocalStorage("MyMovies",[] ) ;
+  const [isFocus, setIsFocus] = useState<boolean>(false)
 
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setTitleMovie(e.target.value);
@@ -40,42 +38,10 @@ const FormAddMovie: React.FC = () => {
       setIsError(!isError);
     }
     else {
-      let tabPlanetInMyFilm: any = []; //tablica pomocnicza do której dodawane są całe planety po przefiltorwaniu po nazwie
-      let planetsInMyMovie: [] | any = []; //tablica pomocnicza do której dodawane są planety jako tablice z obiektami z wymaganymi danymi
-      planetsList.map(item => tabPlanetInMyFilm.push(planets.filter(planet => planet.name === item)));
-      tabPlanetInMyFilm.forEach((item: any) => {
-        const planet = {
-          name: item[0].name,
-          diameter: item[0].diameter,
-          rotation_period: item[0].rotation_period,
-          orbital_period: item[0].orbital_period,
-          gravity: item[0].gravity,
-          population: item[0].population,
-          climate: item[0].climate,
-          terrain: item[0].terrain,
-          surface_water: item[0].surface_water,
-          url: item[0].url,
-          created: item[0].created,
-          edited: item[0].edited,
-        };
-        planetsInMyMovie.push(planet)
-      }
-      );
-    const planetsTab = []; //tablica, która przechowuje planety w postaci obiektów
-    for (const key in planetsInMyMovie) {
-      planetsTab.push({...planetsInMyMovie[key] })
-    }
-      let MyMovie = {
-        title: titleMovie,
-        planets: planetsTab,
-        id: Date.now()+planetsInMyMovie.length,
-      }
-      setState((prev: any) => [...state, MyMovie]);
       setTitleMovie("");
-      setPlanetsList([]);
+      console.log("zapisuje do localstorage");
     }
   };
-
   /* POBIERANIE PLANET */
   const dispatch = useDispatch();
   useEffect(() => {
@@ -105,6 +71,7 @@ const FormAddMovie: React.FC = () => {
   };
 
   const suggestionSelected = (value: React.SetStateAction<string | any>) => {
+    console.log(value)
     setPlanetsList(prev => [...planetsList, value]);
     setSearchText('');
     setSuggestions([])
@@ -116,7 +83,7 @@ const FormAddMovie: React.FC = () => {
   /* FOCUS */
   const handleFocus = () => {
     setIsFocus(!isFocus);
-  };
+  }
 
   return (
     <>
@@ -145,11 +112,11 @@ const FormAddMovie: React.FC = () => {
                 onChange={handleChangePlanets}
                 value={searchText}
                 onFocus={handleFocus}
-                onBlur={handleFocus}
+                onBlur={handleBlur}
                 isFocus={isFocus}
                 photo={search}
                 altPhoto="Search" />
-              { searchText.length > 0
+              { suggestions.length > 0
                 ? (<SuggestionsList suggestions={suggestions} onClick={suggestionSelected} />)
                 : (<div></div>)
               }

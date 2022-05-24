@@ -12,7 +12,6 @@ import { getStarWaresPlanets } from '../../services/planets/planets';
 import { getAllPlanetsApi, getPlanetsApi } from '../../features/planets/planetsSlice';
 import { Planet } from '../../models/Planet';
 import SuggestionsList from '../formComponents/SuggestionsList';
-import { useLocalStorage } from '../../services/costomHooks/useLocalStorage';
 
 const style = bemCssModules(FormAddMovieStyles);
 
@@ -26,7 +25,6 @@ const FormAddMovie: React.FC = () => {
   const [planetsList, setPlanetsList] = useState<string[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isFocus, setIsFocus] = useState<boolean>(false);
-  const [state, setState] = useLocalStorage("MyMovies",[] ) ;
 
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setTitleMovie(e.target.value);
@@ -43,7 +41,7 @@ const FormAddMovie: React.FC = () => {
       let tabPlanetInMyFilm: any = []; //tablica pomocnicza do której dodawane są całe planety po przefiltorwaniu po nazwie
       let planetsInMyMovie: [] | any = []; //tablica pomocnicza do której dodawane są planety jako tablice z obiektami z wymaganymi danymi
       planetsList.map(item => tabPlanetInMyFilm.push(planets.filter(planet => planet.name === item)));
-      tabPlanetInMyFilm.forEach((item: any) => {
+    tabPlanetInMyFilm.forEach((item: any) => {
         const planet = {
           name: item[0].name,
           diameter: item[0].diameter,
@@ -61,6 +59,12 @@ const FormAddMovie: React.FC = () => {
         planetsInMyMovie.push(planet)
       }
       );
+        //tablica, która przechowuje planety w postaci obiektów
+    /* for (const key in tabPlanetInMyFilm) {
+      planetsInMyMovie.push({...tabPlanetInMyFilm[key], cos: key })
+    }
+    */
+      console.log(tabPlanetInMyFilm)
     const planetsTab = []; //tablica, która przechowuje planety w postaci obiektów
     for (const key in planetsInMyMovie) {
       planetsTab.push({...planetsInMyMovie[key] })
@@ -70,12 +74,13 @@ const FormAddMovie: React.FC = () => {
         planets: planetsTab,
         id: Date.now()+planetsInMyMovie.length,
       }
-      setState((prev: any) => [...state, MyMovie]);
+      console.log(MyMovie);
+
       setTitleMovie("");
+      console.log("zapisuje do localstorage");
       setPlanetsList([]);
     }
   };
-
   /* POBIERANIE PLANET */
   const dispatch = useDispatch();
   useEffect(() => {
