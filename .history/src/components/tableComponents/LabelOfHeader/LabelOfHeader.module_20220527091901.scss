@@ -1,0 +1,26 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+.container {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-content: space-between;
+  align-items: center;
+
+  > h2 {
+    color: $darkGrey;
+    font-family: Barlow;
+    font-weight: 400;
+    font-size: 12px;
+    display: block;
+    width: 90%;
+    border: 1 px solid red;
+    background-color: pink;
+  }
+  > div {
+    @include flexColumn;
+    border: 2px solid green;
+    margin-left: 10px;
+  }
+}

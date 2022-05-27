@@ -1,0 +1,11 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 15px;
+  border-bottom: 1px solid $liteGrey;
+}

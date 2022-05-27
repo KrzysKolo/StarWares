@@ -1,0 +1,12 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+.container {
+  border: 2px solid green;
+  > h2 {
+    color: $darkGray;
+    font-family: Batlow;
+    font-weight: 400;
+    font-size: 12px;
+  }
+}

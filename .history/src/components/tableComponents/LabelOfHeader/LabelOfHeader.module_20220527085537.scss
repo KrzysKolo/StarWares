@@ -1,0 +1,13 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+.container {
+  border-bottom: 1px solid $liteGrey;
+  > h2 {
+    color: $darkGrey;
+    font-family: Barlow;
+    font-weight: 400;
+    font-size: 12px;
+    width: 100%;
+  }
+}

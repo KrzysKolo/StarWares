@@ -1,0 +1,19 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+.container {
+  @include flexRow;
+  align-items: center;
+  justify-content: space-between;
+  > h2 {
+    color: $darkGrey;
+    font-family: Barlow;
+    font-weight: 400;
+    font-size: 12px;
+
+  }
+  > div {
+    @include flexColumn;
+    margin-left: 10px;
+  }
+}
