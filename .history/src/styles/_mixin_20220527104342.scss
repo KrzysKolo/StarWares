@@ -33,7 +33,6 @@
 @mixin headerTable {
   color: $primaryColor-300;
   font-size: 12px;
-  text-align: left;
   @include fontBarlow400
 }
 

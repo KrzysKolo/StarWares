@@ -1,0 +1,13 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+.container {
+  margin: 4px 0;
+  padding: 0 15px;
+  @include flexColumn;
+  > tr {
+    @include grid;
+    border: 2px solid red;
+    padding: 20px 0;
+  }
+}

@@ -8,6 +8,7 @@
   > h2 {
     @include headerTable;
     width: 70%;
+    text-align: left;
   }
   > div {
     @include flexColumn;

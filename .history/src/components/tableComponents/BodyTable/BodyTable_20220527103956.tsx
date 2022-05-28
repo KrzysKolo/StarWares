@@ -7,11 +7,16 @@ const style = bemCssModules(BodyTableStyles);
 export type BodyTableProps = {
   item: any;
 }
-const BodyTable: React.FC<BodyTableProps> = ({item}) => {
+const BodyTable: React.FC<BodyTableProps> = () => {
   return (
     <table className={style()}>
+      <tr>
+        <th>
+          nagłówek 1
+        </th>
+      </tr>
 
-     </table>
+    </table>
   )
 }
 

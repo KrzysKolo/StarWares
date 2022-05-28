@@ -2,9 +2,6 @@
 @import '../../../styles/variables';
 
 .container {
-  margin: 5px 0;
-  padding: 0 15px;
-  @include flexColumn;
   > tr {
     padding: 15px 0;
     @include grid;
