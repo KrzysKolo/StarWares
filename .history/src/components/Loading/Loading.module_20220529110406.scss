@@ -1,0 +1,32 @@
+@import '../../styles/mixin';
+@import '../../styles/variables';
+
+.container {
+  width: 100%;
+  height: 100%;
+  @include flexColumn;
+  justify-content: center;
+  align-items: center;
+  &__arrows {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    animation: loading 0.5s infinite;
+    @include flexColumn;
+  }
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-180deg);
+    }
+    75% {
+
+    }
+  100% {
+    transform: rotate(1deg);
+  }
+  }
+}
+
