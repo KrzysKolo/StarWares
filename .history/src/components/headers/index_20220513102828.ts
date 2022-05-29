@@ -1,1 +1,0 @@
-export { default as HeaderH1 } from './HeaderH1';

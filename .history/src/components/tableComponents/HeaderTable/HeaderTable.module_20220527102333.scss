@@ -1,8 +1,0 @@
-@import '../../../styles/mixin';
-@import '../../../styles/variables';
-
-.container {
-  @include grid;
-  margin: 0 15px;
-  border-bottom: 1px solid $liteGrey;
-}

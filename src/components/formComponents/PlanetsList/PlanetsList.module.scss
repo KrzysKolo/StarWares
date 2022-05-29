@@ -23,16 +23,16 @@
     }
    }
    &__line1 {
-    width: 110%;
-    height: 2px;
     background-color: $darkGrey;
+    height: 2px;
     transform: rotate(45deg) translate(4px, 4px);
-    }
-   &__line2 {
     width: 110%;
-    height: 2px;
-    background-color: $darkGrey;
-    transform: rotate(-45deg) translate(4px, -4px);
+    }
+    &__line2 {
+     background-color: $darkGrey;
+     height: 2px;
+     transform: rotate(-45deg) translate(4px, -4px);
+     width: 110%;
    }
   &__listItem{
     align-items: center;

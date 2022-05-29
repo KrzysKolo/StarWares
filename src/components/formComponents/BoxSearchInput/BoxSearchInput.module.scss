@@ -13,9 +13,9 @@
     @include fontBarlow400;
   }
   &__inputBox {
+    width: 539px;
     @include fontBarlow400;
     @include flexRow;
-      width: 539px;
     > input {
       border: none;
       color: $veryDarkGrey;
@@ -33,9 +33,9 @@
   }
   &__inputBoxFocus{
     background-color: #FDFFE2;
+    width: 539px;
     @include fontBarlow400;
     @include flexRow;
-      width: 539px;
     > input {
       background-color: #FDFFE2;
       border: none;

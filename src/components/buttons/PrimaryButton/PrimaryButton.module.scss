@@ -27,7 +27,7 @@
     @include flexRow;
   }
   &__circleSecondary {
+    background-color: $primaryColor-100;
     @include primaryButtonCircle;
-     background-color: $primaryColor-100;
   }
 }

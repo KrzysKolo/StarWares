@@ -3,7 +3,7 @@ import React from 'react';
 import { default as bemCssModules } from 'bem-css-modules';
 import { default as LoadingSmallStyles } from './LoadingSmall.module.scss';
 //FILES
-import arrows from '../../assets/images/Arrows.png';
+import arrows from '../../assets/images/ArrowsSmall.png';
 
 const style = bemCssModules(LoadingSmallStyles);
 

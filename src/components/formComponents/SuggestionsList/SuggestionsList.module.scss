@@ -11,14 +11,14 @@
   width: 515px;
   > ul {
     margin:0;
-    padding: 0;
     list-style: none;
+    padding: 0;
    > li {
       color: $darkGrey;
+      cursor: pointer;
       font-family: Barlow;
       font-size: 16px;
       font-weight: 400;
-      cursor: pointer;
       margin-bottom: 11px;
       }
     }

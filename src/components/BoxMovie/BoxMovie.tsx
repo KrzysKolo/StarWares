@@ -45,4 +45,4 @@ const BoxMovie: React.FC<BoxMovieProps> = ({ item }) => {
   )
 }
 
-export default BoxMovie
+export default BoxMovie;

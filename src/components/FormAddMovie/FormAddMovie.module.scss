@@ -10,9 +10,9 @@
   padding: 31px 95px;
 
   &__formAddMovie {
-    @include flexColumn;
-    justify-content: flex-end;
     align-items: flex-end;
+    justify-content: flex-end;
+    @include flexColumn;
     > div {
       justify-content: space-between;
       @include flexColumn;

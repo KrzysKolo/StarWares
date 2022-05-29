@@ -2,15 +2,15 @@
 @import '../../../styles/variables';
 
 .container {
-  @include flexRow;
   align-items: center;
   justify-content: center;
+  @include flexRow;
   > h2 {
-    @include headerTable;
     width: 70%;
+    @include headerTable;
   }
   > div {
-    @include flexColumn;
     margin-left: 10px;
+    @include flexColumn;
   }
 }

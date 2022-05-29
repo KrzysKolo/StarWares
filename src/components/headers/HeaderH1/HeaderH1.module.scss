@@ -6,22 +6,20 @@
   width: 300px;
   &__letters {
     margin-right: -15px;
-
     height: 34px;
   }
   &__letters-1 {
-    margin-right: -10px;
-    margin:0;
     height: 34px;
+    margin:0;
+    margin-right: -10px;
   }
   &__letters-2 {
-    margin-right: -9px;
     height: 34px;
+    margin-right: -9px;
   }
   &__letters-3 {
-    margin-right: -3px;
     margin-left: -3px;
+    margin-right: -3px;
     margin-top: 5px;
   }
-
 }

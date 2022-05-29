@@ -1,9 +1,0 @@
-@import '../../styles/mixin';
-
-.container {
-  min-height: 305px;
-  padding: 0 30px;
-  @include flexColumn;
-  justify-content: center;
-  align-items: center;
-}

@@ -17,9 +17,9 @@
     @include fontBarlow400;
   }
   &__inputBox {
+    width: 539px;
     @include fontBarlow400;
     @include flexRow;
-      width: 539px;
     > input {
       border: none;
       color: $veryDarkGrey;

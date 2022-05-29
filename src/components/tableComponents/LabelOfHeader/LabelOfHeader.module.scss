@@ -2,20 +2,19 @@
 @import '../../../styles/variables';
 
 .container {
-  @include flexRow;
   align-items: center;
   justify-content: center;
+  @include flexRow;
   > h2 {
     color: $darkGrey;
     font-family: Barlow;
     font-weight: 400;
     font-size: 12px;
-    width: 70%;
     text-align: right;
-
+    width: 70%;
   }
   > div {
-    @include flexColumn;
     margin-left: 10px;
+    @include flexColumn;
   }
 }

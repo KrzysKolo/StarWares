@@ -2,28 +2,29 @@ import React, { useEffect, useState } from 'react';
 //CSS
 import { default as bemCssModules } from 'bem-css-modules';
 import { default as TableInfoPlanetsStyles } from './TableInfoPlanets.module.scss'
-//API
 //REDUX
+import { getAllPlanetsApi } from '../../features/planets/planetsSlice';
+import { getAllFilmsLocalStorage } from '../../features/filmsFromLocalStorage/filmsFromLocalStorageSlice';
 //COMPONENTS
 import { HeaderTable, BodyTable } from '../tableComponents';
-import { LoadingSmall } from '../../components'
+import { LoadingSmall } from '../../components';
+import ErrorMessageComponent from '../tableComponents/ErrorMessageTable';
 //MODELS
+import { TableInfoPlanetsProps } from '../../models/TableInfoPlanetsProps';
+import { Planet } from '../../models/Planet';
 //FILES
 import { useSelector } from 'react-redux';
-import { getAllFilmsLocalStorage } from '../../features/filmsFromLocalStorage/filmsFromLocalStorageSlice';
-import { getAllPlanetsApi } from '../../features/planets/planetsSlice';
-import { TableInfoPlanetsProps } from '../../models/TableInfoPlanetsProps';
 
 const style = bemCssModules(TableInfoPlanetsStyles);
 
 const TableInfoPlanets: React.FC<TableInfoPlanetsProps> = ({ text, item, isLoading, setIsLoading }) => {
   const { id } = item;
   const _filmFromLocalStorage = useSelector(getAllFilmsLocalStorage);
-/*   const _filmFromApi = useSelector(getAllFilmsFromApi); */
   const { filmsTab } = useSelector((store: any) => store.starWars);
   const _planets = useSelector(getAllPlanetsApi);
-  const [infoFilm, setInfoFilm] = useState([]);
-  const [isErr, setIsErr] = useState('');
+  const [infoFilm, setInfoFilm] = useState<Planet[]>([]);
+  const [isErr, setIsErr] = useState<boolean>(false);
+  const [isErrMessage, setIsErrMessage] = useState<string>('');
 
   const filmFromLocalStorage = () => {
     let timer = setTimeout(() => {
@@ -34,7 +35,8 @@ const TableInfoPlanets: React.FC<TableInfoPlanetsProps> = ({ text, item, isLoadi
         clearTimeout(timer);
       }
       catch {
-        setIsErr('is problem');
+        setIsErr(!isErr);
+        setIsErrMessage("There is a problem loading the data!");
       }
     }, 500)
   };
@@ -71,7 +73,8 @@ const TableInfoPlanets: React.FC<TableInfoPlanetsProps> = ({ text, item, isLoadi
         clearTimeout(timer);
       }
       catch {
-        setIsErr("is problem")
+        setIsErr(!isErr);
+        setIsErrMessage("There is a problem loading the data!");
       }
     }, 500);
   };
@@ -92,9 +95,9 @@ const TableInfoPlanets: React.FC<TableInfoPlanetsProps> = ({ text, item, isLoadi
         ? (<LoadingSmall />)
         : (<BodyTable film={infoFilm} />)
       }
-      { isErr && <div>{isErr}</div> }
+      { isErr && <ErrorMessageComponent message={isErrMessage} /> }
   </section>
   )
 }
 
-export default TableInfoPlanets
+export default TableInfoPlanets;
