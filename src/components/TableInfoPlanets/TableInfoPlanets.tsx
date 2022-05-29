@@ -6,7 +6,7 @@ import { default as TableInfoPlanetsStyles } from './TableInfoPlanets.module.scs
 import { getAllPlanetsApi } from '../../features/planets/planetsSlice';
 import { getAllFilmsLocalStorage } from '../../features/filmsFromLocalStorage/filmsFromLocalStorageSlice';
 //COMPONENTS
-import { HeaderTable, BodyTable } from '../tableComponents';
+import { BodyTable, HeaderInTable } from '../tableComponents';
 import { LoadingSmall } from '../../components';
 import ErrorMessageComponent from '../tableComponents/ErrorMessageTable';
 //MODELS
@@ -86,11 +86,11 @@ const TableInfoPlanets: React.FC<TableInfoPlanetsProps> = ({ text, item, isLoadi
     else {
       filmFromAPI();
     }
-  }, [id]);
+  }, []);
 
   return (
     <section className={style()}>
-      <HeaderTable isLoading={isLoading} />
+      <HeaderInTable isLoading={isLoading} />
       { isLoading
         ? (<LoadingSmall />)
         : (<BodyTable film={infoFilm} />)

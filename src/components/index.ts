@@ -7,7 +7,6 @@ export { default as FormAddMovie } from './FormAddMovie';
 export { default as BoxMovie } from './BoxMovie';
 export { default as ErrorMessage } from './formComponents/ErrorMessage';
 export { default as ErrorMessageTable } from './tableComponents/ErrorMessageTable';
-export { default as HeaderTable } from './tableComponents/HeaderTable';
 export { default as LabelOfHeader } from './tableComponents/LabelOfHeader';
 export { default as LabelOfHeaderLoading } from './tableComponents/LabelOfHeaderLoading';
 export { default as Loading } from './Loading';

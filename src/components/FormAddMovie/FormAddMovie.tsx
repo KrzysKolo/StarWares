@@ -7,30 +7,33 @@ import { getStarWaresPlanets } from '../../services/planets/planets';
 //REDUX
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPlanetsApi, getPlanetsApi } from '../../features/planets/planetsSlice';
-import { stateWindowAddMovie } from '../../features/windows/windowsSlice';
+import { changeVariantButton, isShowAddMovieChange, stateVariantButton, stateWindowAddMovie } from '../../features/windows/windowsSlice';
 //COMPONENTS
 import { BoxInput, BoxSearchInput, PlanetsList, SuggestionsList, ErrorMessage } from '../formComponents';
 import { SmallButton, SmallButtonReadonly } from '../buttons';
+//REDUX
+import { getFilmsLocalStorage } from '../../features/filmsFromLocalStorage/filmsFromLocalStorageSlice';
 //MODELS
 import { Planet } from '../../models/Planet';
 //FILES
 import search from '../../assets/svgs/icons/Search.svg';
 import { useLocalStorage } from '../../services/customHooks/useLocalStorage';
 
-
 const style = bemCssModules(FormAddMovieStyles);
 
 const FormAddMovie: React.FC = () => {
 
   const _stateWindowAddMovie = useSelector(stateWindowAddMovie);
-  const _planets = useSelector(getAllPlanetsApi)
+  const _planets = useSelector(getAllPlanetsApi);
+  const _variantButton = useSelector(stateVariantButton);
   const [titleMovie, setTitleMovie] = useState<string>("");
   const [searchText, setSearchText] = useState<string>('');
   const [suggestions, setSuggestions] = useState<Planet[]>([]);
   const [planetsList, setPlanetsList] = useState<string[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isFocus, setIsFocus] = useState<boolean>(false);
-  const [state, setState] = useLocalStorage("MyMovies",[] ) ;
+  const [state, setState] = useLocalStorage("MyMovies", []);
+  const dispatch = useDispatch();
 
   const handleChangeValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setTitleMovie(e.target.value);
@@ -53,7 +56,7 @@ const FormAddMovie: React.FC = () => {
         climate: item[0].climate,
         surface_water: item[0].surface_water,
       };
-      planetsInMyMovie.push(planet)
+      planetsInMyMovie.push(planet);
     });
     const planetsTab = []; //an array that stores planets as objects
     for (const key in planetsInMyMovie) {
@@ -67,7 +70,13 @@ const FormAddMovie: React.FC = () => {
     setState((prev: any) => [...state, MyMovie]);
     setTitleMovie("");
     setPlanetsList([]);
+    dispatch(changeVariantButton(!_variantButton));
+    dispatch(isShowAddMovieChange(!_stateWindowAddMovie));
   };
+
+  useEffect(() => {
+    dispatch(getFilmsLocalStorage(state))
+  }, [state]);
 
   const handleSubmitToLocalStorage = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
@@ -76,10 +85,9 @@ const FormAddMovie: React.FC = () => {
     }
     else {
       addToLocalStorage();
-    }
+     }
   };
 /* DOWNLOAD PLANET */
-  const dispatch = useDispatch();
   useEffect(() => {
     const getPalents = async () => {
       try {

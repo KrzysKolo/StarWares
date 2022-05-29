@@ -1,9 +1,22 @@
 @import '../../styles/mixin';
+@import '../../styles/variables';
 
 .container {
   align-items: center;
   justify-content: center;
-  min-height: 375px;
+  min-height: 405px;
   padding: 0 30px;
   @include flexColumn;
+  > div {
+    width: 100%;
+  }
+  &__ErrorDiv{
+    align-items: center;
+    color: $primaryColor-300;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    z-index: 999999000;
+    @include flexColumn;
+  }
 }

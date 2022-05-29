@@ -4,6 +4,8 @@
 .container {
   align-items: center;
   justify-content: center;
+  min-height: 100%;
+  width: 100%;
   @include flexColumn;
   &__arrows {
     align-items: center;
@@ -17,7 +19,7 @@
     }
   100% {
     transform: rotate(-360deg)
-  }
+    }
   }
 }
 

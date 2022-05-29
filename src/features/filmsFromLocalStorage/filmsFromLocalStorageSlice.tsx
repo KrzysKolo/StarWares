@@ -1,16 +1,16 @@
 /* pobieranie danych o gwiazdach https://swapi.dev/api/planets/ z API */
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { Planet } from '../../models/Planet';
-
 export interface planetsApiType {
   filmsLocalStorageList: [] | any;
-  titleFilms: []
+  titleFilms: [],
+  isLoading: boolean,
 };
 
 const initialState: planetsApiType = {
   filmsLocalStorageList: [],
-  titleFilms: []
+  titleFilms: [],
+  isLoading: true,
 };
 
 const filmsLocalStorageSlice = createSlice({
@@ -23,7 +23,7 @@ const filmsLocalStorageSlice = createSlice({
     getTitleFilmsLocalStorage: (state, action) => {
       state.titleFilms = action.payload;
       },
-    }
+     }
   });
 
 export const { getFilmsLocalStorage, getTitleFilmsLocalStorage } = filmsLocalStorageSlice.actions;

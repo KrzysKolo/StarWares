@@ -4,7 +4,7 @@ import { default as bemCssModules } from 'bem-css-modules';
 import { default as AddMovieStyles } from './AddMovie.module.scss';
 //REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { isShowAddMovieChange, stateWindowAddMovie } from '../../features/windows/windowsSlice';
+import { changeVariantButton, isShowAddMovieChange, stateVariantButton, stateWindowAddMovie } from '../../features/windows/windowsSlice';
 //COMPONENTS
 import { PrimaryButton } from '../buttons';
 //FILES
@@ -14,12 +14,12 @@ const style = bemCssModules(AddMovieStyles);
 
 const AddMovie = () => {
 
-  const [variantButton, setVariantButton] = useState<boolean>(true);
+  const _variantButton = useSelector(stateVariantButton);
   const _stateWindowAddMovie = useSelector(stateWindowAddMovie);
   const dispatch = useDispatch();
 
   const handleShowFormToAddFilm = () => {
-    setVariantButton(!variantButton);
+    dispatch(changeVariantButton(!_variantButton));
     dispatch(isShowAddMovieChange(!_stateWindowAddMovie));
   }
 
@@ -29,7 +29,7 @@ const AddMovie = () => {
       <div className={style('button')}>
         <PrimaryButton
           title="Add movie"
-          primary={variantButton}
+          primary={_variantButton}
           onClick={handleShowFormToAddFilm} />
       </div>
     </div>

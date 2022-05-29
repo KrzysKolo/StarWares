@@ -6,30 +6,29 @@ import { default as MovieListStyles } from './MovieList.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllFilmsFromApi, getFilmsFromApi } from '../../features/filmsFromApi/filmsFromApiSlice';
 import { getAllFilms, getFilmsApiAndStorage } from '../../features/allFilms/allFilmsSlice';
-import { getAllTitleFilmsLocalStorage, getFilmsLocalStorage, getTitleFilmsLocalStorage } from '../../features/filmsFromLocalStorage/filmsFromLocalStorageSlice';
+import { getAllFilmsLocalStorage, getAllTitleFilmsLocalStorage, getTitleFilmsLocalStorage } from '../../features/filmsFromLocalStorage/filmsFromLocalStorageSlice';
 //COMPONENTS
-import { BoxMovie, Loading} from '../../components';
+import { BoxMovie, Loading } from '../../components';
+import { ErrorMessageTable } from '../tableComponents';
 //MODELS
 import { ItemMovieList } from '../../models/ItemMovieList';
-//FILES
-import { useLocalStorage } from '../../services/customHooks/useLocalStorage';
 
 const style = bemCssModules(MovieListStyles);
 
 const MovieList: React.FC = () => {
 
   const { filmsTab } = useSelector((store: any) => store.starWars);
-  const [state] = useLocalStorage("MyMovies", []);
+  const _filmsFromLocalStorage = useSelector(getAllFilmsLocalStorage);
   const _filmsFromApi = useSelector(getAllFilmsFromApi);
   const _AllFilms = useSelector(getFilmsApiAndStorage)
   const _filmsTitleStorage = useSelector(getAllTitleFilmsLocalStorage)
   const { isLoading } = useSelector((store: any) => store.starWars);
+  const { isError } = useSelector((store: any) => store.starWars);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getFilmsLocalStorage(state));
     let tabFilmStorage: any = []
-    state.forEach((item: any) => {
+    _filmsFromLocalStorage.forEach((item: any) => {
       const films = {
         title: item.title,
         id: item.id,
@@ -37,7 +36,7 @@ const MovieList: React.FC = () => {
       tabFilmStorage.push(films)
     });
     dispatch(getTitleFilmsLocalStorage(tabFilmStorage));
-  }, [state]);
+  }, [_filmsFromLocalStorage]);
 
   useEffect(() => {
     let tabFilm: any = []
@@ -49,23 +48,36 @@ const MovieList: React.FC = () => {
       tabFilm.push(films)
     });
     dispatch(getFilmsFromApi(tabFilm))
-  }, [filmsTab]);
+  }, [dispatch, filmsTab]);
 
   useEffect(() => {
     let AllFilmsTab: [] | any = [];
-    AllFilmsTab = _filmsFromApi.concat(_filmsTitleStorage);
-    dispatch(getAllFilms(AllFilmsTab));
-  }, [filmsTab, state]);
+    if (_filmsFromApi.length === 0) {
+      dispatch(getAllFilms(AllFilmsTab));
+    }
+    else {
+      AllFilmsTab = _filmsFromApi.concat(_filmsTitleStorage);
+      dispatch(getAllFilms(AllFilmsTab));
+    }
+   }, [_filmsFromApi, _filmsTitleStorage, dispatch, filmsTab, _filmsFromLocalStorage]);
 
   return (
     <div className={style()}>
-      {isLoading && <Loading />}
-      {
-        _AllFilms.map((item: ItemMovieList) => <BoxMovie key={item.id} item={item} />)
+      { isError && (<div className={style('ErrorDiv')}><ErrorMessageTable message={"Error getting data from API!"} /></div>)}
+      { isLoading
+        ? (<Loading />)
+        : (<div>
+          {
+            _AllFilms.map((item: ItemMovieList) => <BoxMovie key={item.id} item={item} />)
+          }
+        </div>)
       }
+
+
     </div>
   )
 }
 
 export default MovieList;
+
 

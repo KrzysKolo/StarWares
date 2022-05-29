@@ -5,4 +5,12 @@
   align-items: center;
   justify-content: center;
   @include flexColumn;
+  > div {
+    align-items: center;
+    justify-content: center;
+    @include flexColumn;
+    > img {
+      width: 75%;
+    }
+  }
 }

@@ -1,15 +1,16 @@
 import React from 'react';
 //CSS
 import { default as bemCssModules } from 'bem-css-modules';
-import { default as HeaderTableStyles } from './HeaderTable.module.scss';
+import { default as HeaderInTableStyles } from './HeaderInTable.module.scss';
 //COMPONENTS
-import { LabelOfHeader, LabelOfHeaderLoading } from '../';
+import LabelOfHeader from '../LabelOfHeader';
+import LabelOfHeaderLoading from '../LabelOfHeaderLoading';
 //MODELS
 import { HeaderTableProps } from '../../../models/HeaderTableProps';
 
-const style = bemCssModules(HeaderTableStyles);
+const style = bemCssModules(HeaderInTableStyles);
 
-const HeaderTable: React.FC<HeaderTableProps> = ({ isLoading }) => {
+const HeaderInTable: React.FC<HeaderTableProps> = ({ isLoading }) => {
   return (
     <header className={style()}>
       { isLoading
@@ -26,4 +27,4 @@ const HeaderTable: React.FC<HeaderTableProps> = ({ isLoading }) => {
   )
 }
 
-export default HeaderTable;
+export default HeaderInTable

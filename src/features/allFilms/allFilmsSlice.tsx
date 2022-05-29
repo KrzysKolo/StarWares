@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { boolean } from 'yup';
 import { RootState } from '../../app/store';
+import { Planet } from '../../models/Planet';
 /* import { Planet } from '../../models/Planet'; */
 export interface allFilmsType {
   allFilms: [];

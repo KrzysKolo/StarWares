@@ -37,9 +37,9 @@ const starWarsSlice = createSlice({
       })
       .addCase(getFilmItems.rejected, (state) => {
         state.isLoading = false;
+        state.isError = true;
       });
-  },
-
-});
+    },
+  });
 
 export default starWarsSlice.reducer;
