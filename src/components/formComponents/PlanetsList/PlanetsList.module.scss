@@ -2,12 +2,11 @@
 @import './../../../styles/mixin';
 
 .container {
-  border: 2ps solid red;
   flex-wrap: wrap;
   padding: 13px 0 18px 0;
   max-width: 540px;
   @include flexRow;
-  &__aaa{
+  &__close{
     align-items: space-between;
     border: none;
     cursor: pointer;
@@ -43,6 +42,7 @@
     min-width: 122px;
     margin-top: 5px;
     margin-right: 5px;
+
     @include flexRow;
     > h3 {
       font-family: Barlow;
@@ -52,10 +52,10 @@
       margin-left: 18px;
       margin-right: 14px;
     }
-
-
   }
-
-
-
+}
+@media screen and (max-width: 343px){
+  .container {
+    margin-left: 5px;
+  }
 }

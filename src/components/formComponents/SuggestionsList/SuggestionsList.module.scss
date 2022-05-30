@@ -24,3 +24,11 @@
     }
   }
 }
+@media screen and (max-width: 343px) {
+  .container {
+    &__suggestionsWrapper {
+      width: 282px;
+     }
+
+  }
+}

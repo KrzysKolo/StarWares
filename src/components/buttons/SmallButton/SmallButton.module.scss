@@ -21,3 +21,8 @@
     background-color: $primaryColor-300;
   }
 }
+@media screen and (max-width: 343px){
+  .container {
+    width: 282px;
+  }
+}

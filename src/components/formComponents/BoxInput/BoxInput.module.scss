@@ -5,6 +5,7 @@
   align-items: flex-start;
   background-color: $white;;
   border-bottom: 1px solid $mediumGrey;
+  max-width: 100%;
   @include flexColumn;
   &__error {
     color: red;
@@ -25,14 +26,26 @@
       color: $veryDarkGrey;
       font-size: $fontSize-18;
       outline: none;
-      padding: 7px 0;;
+      padding: 7px 0;
       width: 100%;
       &::placeholder {
         color: $liteGrey;
       }
     }
-    > img {
-      padding-left: 10px;
+  }
+}
+@media screen and (max-width: 343px){
+  .container {
+    margin: 0 5px;
+    > label {
+      margin-left: 5px;
+    }
+    &__inputBox {
+      width: 265px;
+      > input {
+        font-size: $fontSize-16;
+        margin-left: 5px;
+      }
     }
   }
 }

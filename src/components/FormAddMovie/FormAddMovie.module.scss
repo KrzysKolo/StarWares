@@ -18,3 +18,15 @@
      }
   }
 }
+@media screen and (max-width: 343px){
+  .container {
+    margin: 0 15px;
+    padding: 5px 0;
+    width: 302px;
+    &__formAddMovie {
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 14px;
+     }
+  }
+}

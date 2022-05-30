@@ -3,7 +3,7 @@
 
 .container {
   align-items: flex-start;
-  background-color: $white;;
+  background-color: $white;
   border-bottom: 1px solid $mediumGrey;
   z-index: 99999!important;
   @include flexColumn;
@@ -21,7 +21,7 @@
       color: $veryDarkGrey;
       font-size: $fontSize-18;
       outline: none;
-      padding: 7px 0;;
+      padding: 7px 0;
       width: 100%;
       &::placeholder {
         color: $liteGrey;
@@ -52,5 +52,34 @@
       padding-left: 10px;
     }
   }
-
+}
+@media screen and (max-width: 343px){
+  .container {
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 265px;
+    > label {
+      margin-left: 5px;
+    }
+    &__inputBox {
+      align-items: center;
+      justify-content: center;
+      width: 265px;
+      > input {
+        font-size: $fontSize-16;
+        margin-left: 5px;
+        max-width: 255px;
+        }
+     }
+    &__inputBoxFocus{
+      align-items: center;
+      justify-content: center;
+      max-width: 265px;
+      > input {
+        font-size: $fontSize-16;
+        max-width: 255px;
+        padding-left: 5px;
+      }
+    }
+  }
 }

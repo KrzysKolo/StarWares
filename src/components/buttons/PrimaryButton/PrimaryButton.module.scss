@@ -31,3 +31,13 @@
     @include primaryButtonCircle;
   }
 }
+@media screen and (max-width: 343px) {
+  .container {
+  justify-content: space-between;
+  padding: 0 10px;
+  width: 302px;
+  &__text {
+   padding: 14px 0;
+    }
+  }
+}

@@ -15,3 +15,9 @@
   width: 96%;
   z-index: 9999;
 }
+@media screen and (max-width: 343px) {
+  .container {
+    margin-left: 6px;
+    width:89%;
+  }
+}

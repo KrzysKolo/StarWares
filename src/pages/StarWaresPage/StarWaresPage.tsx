@@ -15,7 +15,7 @@ const StarWaresPage: React.FC = () => {
       <MovieList />
       <AddMovie />
       <FormAddMovie />
-      <Footer text="COPYRIGHT © 2022 MIRUMEE SOFTWARE" />
+      <Footer text="COPYRIGHT © 2022 KRZYSZTOFA KOŁODZIEJCZAK DLA MIRUMEE SOFTWARE" />
     </section>
   )
 }
