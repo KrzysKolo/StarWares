@@ -1,12 +1,19 @@
-/* @import './../../styles/variables';
-@import './../../styles/mixin'; */
+@import './../../styles/variables';
+@import './../../styles/mixin';
 
 .container {
+  background-color: $disableGrey;
+  border-radius: 8px;
+  left: 205px;
   margin: 96px auto;
   min-height: 736px;
-  width: 790px;
-  left: 205px;
   top: 96px;
-  border-radius: 8px;
-  background-color: #E0E6EE;
+  width: 790px;
+}
+@media screen and (max-width: 343px) {
+  .container {
+    margin: 20px auto;
+    max-width: 100vw;
+    border: 3px solid red;
+  }
 }

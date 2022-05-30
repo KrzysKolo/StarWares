@@ -1,9 +1,9 @@
+@import '../../styles/mixin';
 
 .container {
   align-items: center;
   align-content: center;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   padding-top: 40px;
+  @include flexColumn;
 }

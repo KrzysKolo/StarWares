@@ -32,7 +32,7 @@ const BoxSearchInput: React.FC<BoxSearchInputProps> = (
               onChange={onChange}
               onFocus={onFocus}
               onBlur={onBlur}
-            />
+           />
             <img src={photo} alt={altPhoto} />
           </div>)
         : (<div className={style('inputBox')}>

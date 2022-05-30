@@ -12,22 +12,25 @@ import char from './../../../assets/svgs/letters/Vector-5.svg';
 import e from './../../../assets/svgs/letters/Vector-6.svg';
 import en from './../../../assets/svgs/letters/Vector-7.svg';
 import d from './../../../assets/svgs/letters/Vector-8.svg';
+import small from './../../../assets/images/front-end.png';
 
 const style = bemCssModules(HeaderH1Styles);
 
 function HeaderH1() {
   return (
     <div className={style()}>
-      <img className={style('letters')} src={f} alt="Recruitment task" />
-      <img className={style('letters-1')} src={r} alt="Recruitment task" />
-      <img className={style('letters-1')} src={o} alt="Recruitment task" />
-      <img className={style('letters-1')} src={n} alt="Recruitment task" />
-      <img className={style('letters-1')} src={t} alt="Recruitment task" />
-      <img className={style('letters-3')} src={char} alt="Recruitment task" />
-      <img className={style('letters-2')} src={e} alt="Recruitment task" />
-      <img className={style('letters-2')} src={en} alt="Recruitment task" />
-      <img className={style('letters')} src={d} alt="Recruitment task" />
-    </div>
+      <div className={style('frontEnd')}>
+        <img className={style('letters')} src={f} alt="Recruitment task" />
+        <img className={style('letters-1')} src={r} alt="Recruitment task" />
+        <img className={style('letters-1')} src={o} alt="Recruitment task" />
+        <img className={style('letters-1')} src={n} alt="Recruitment task" />
+        <img className={style('letters-1')} src={t} alt="Recruitment task" />
+        <img className={style('letters-3')} src={char} alt="Recruitment task" />
+        <img className={style('letters-2')} src={e} alt="Recruitment task" />
+        <img className={style('letters-2')} src={en} alt="Recruitment task" />
+        <img className={style('letters')} src={d} alt="Recruitment task" />
+      </div>
+     </div>
   );
 }
 

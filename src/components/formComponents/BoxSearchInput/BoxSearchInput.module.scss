@@ -5,8 +5,8 @@
   align-items: flex-start;
   background-color: $white;;
   border-bottom: 1px solid $mediumGrey;
+  z-index: 99999!important;
   @include flexColumn;
-
   > label {
     color: $darkGrey;
     font-size: $fontSize-12;
