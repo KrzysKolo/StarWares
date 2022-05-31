@@ -20,8 +20,9 @@
       display: none;
     }
     &__smartphone {
-      display: inline-block;
       align-items: center;
+      border-top: 4px solid #F6F8FA;
+      display: inline-block;
       justify-content: center;
       @include flexRow;
     }

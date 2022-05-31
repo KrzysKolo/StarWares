@@ -2,10 +2,50 @@
 @import '../../../styles/variables';
 
 .container {
-  color: red;
+  background-color: transparent;
 }
 @media screen and (max-width: 343px) {
   .container {
-    color: blue;
+    * {
+      margin: 4px;
+      padding: 0;
+     }
+     margin-top: -4px;
+     padding: 10px 0;
+    min-width: 302px;
+    &:nth-child(odd) {
+      background-color: $white;
+    }
+    &:nth-child(even) {
+      background: #f2f2f2;
+    }
+    > tr {
+     > th {
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 151px;
+        @include flexRow;
+        @include fontBarlow400;
+        > h3 {
+          color: $veryDarkGrey;
+          font-size: $fontSize-12;
+          text-align: left;
+          width: 50%;
+        }
+      }
+      > td {
+        width: 50%;
+        > h3 {
+          color: $primaryColor-300;
+          font-size: 14px;
+          @include fontBarlow400;
+         }
+        > h4 {
+          color: $veryDarkGrey;
+          font-size: 14px;
+          @include fontBarlow400;
+        }
+      }
+    }
   }
 }

@@ -11,32 +11,32 @@ const ColumnInTable: React.FC<RowInTableProps> = ({ item }) => {
   return (
     <tbody className={style()}>
       <tr>
-        <th>Planet Name</th>
-        <td>{item.name}</td>
+        <th><h3>Planet Name</h3></th>
+        <td><h3>{item.name}</h3></td>
       </tr>
       <tr>
-        <th>Rotation period</th>
-        <td>{item.rotation_period}</td>
+        <th><h3>Rotation period</h3></th>
+        <td><h4>{item.rotation_period}</h4></td>
       </tr>
       <tr>
-        <th>Orbital period</th>
-        <td>{item.orbital_period}</td>
+        <th><h3>Orbital period</h3></th>
+        <td><h4>{item.orbital_period}</h4></td>
       </tr>
       <tr>
-        <th>Diameter</th>
-        <td>{item.diameter}</td>
+        <th><h3>Diameter</h3></th>
+        <td><h4>{item.diameter}</h4></td>
       </tr>
       <tr>
-        <th>Climate</th>
-        <td>{item.climate}</td>
+        <th><h3>Climate</h3></th>
+        <td><h4>{item.climate}</h4></td>
       </tr>
       <tr>
-        <th>Surface water</th>
-        <td>{item.surface_water}</td>
+        <th><h3>Surface water</h3></th>
+        <td><h4>{item.surface_water}</h4></td>
       </tr>
       <tr>
-        <th>Population</th>
-        <td>{item.population}</td>
+        <th><h3>Population</h3></th>
+        <td><h4>{item.population}</h4></td>
       </tr>
     </tbody>
   )
