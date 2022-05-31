@@ -1,0 +1,10 @@
+@import './../../../styles/mixin';
+@import './../../../styles/variables';
+
+.container {
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0;
+  padding: 0 15px;
+  @include flexColumn;
+}

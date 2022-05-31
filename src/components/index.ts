@@ -5,6 +5,7 @@ export { default as MovieList } from './MovieList';
 export { default as AddMovie } from './AddMovie';
 export { default as FormAddMovie } from './FormAddMovie';
 export { default as BoxMovie } from './BoxMovie';
+export { default as ColumnInTable } from './tableComponents/ColumnInTable';
 export { default as ErrorMessage } from './formComponents/ErrorMessage';
 export { default as ErrorMessageTable } from './tableComponents/ErrorMessageTable';
 export { default as LabelOfHeader } from './tableComponents/LabelOfHeader';

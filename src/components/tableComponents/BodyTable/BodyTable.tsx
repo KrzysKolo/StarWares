@@ -15,7 +15,7 @@ const BodyTable: React.FC<BodyTableProps> = ({ film }) => {
 
   return (
     <table className={style()}>
-      { planets.map((item: any) => <RowInTable key={item.name} item={item} />) }
+      { planets.map((item: any) => <RowInTable key={item.name} item={item} />)}
     </table>
   )
 }

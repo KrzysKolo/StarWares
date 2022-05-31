@@ -1,0 +1,11 @@
+@import '../../../styles/mixin';
+@import '../../../styles/variables';
+
+.container {
+  color: red;
+}
+@media screen and (max-width: 343px) {
+  .container {
+    color: blue;
+  }
+}

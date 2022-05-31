@@ -6,7 +6,7 @@ import { default as TableInfoPlanetsStyles } from './TableInfoPlanets.module.scs
 import { getAllPlanetsApi } from '../../features/planets/planetsSlice';
 import { getAllFilmsLocalStorage } from '../../features/filmsFromLocalStorage/filmsFromLocalStorageSlice';
 //COMPONENTS
-import { BodyTable, HeaderInTable } from '../tableComponents';
+import { BodyTable, BodyTableSmartphone, HeaderInTable } from '../tableComponents';
 import { LoadingSmall } from '../../components';
 import ErrorMessageComponent from '../tableComponents/ErrorMessageTable';
 //MODELS
@@ -90,11 +90,19 @@ const TableInfoPlanets: React.FC<TableInfoPlanetsProps> = ({ text, item, isLoadi
 
   return (
     <section className={style()}>
-      <HeaderInTable isLoading={isLoading} />
-      { isLoading
-        ? (<LoadingSmall />)
-        : (<BodyTable film={infoFilm} />)
-      }
+      <div className={style('computer')}>
+        <HeaderInTable isLoading={isLoading} />
+        { isLoading
+          ? (<LoadingSmall />)
+          : (<BodyTable film={infoFilm} />)
+        }
+      </div>
+      <div className={style('smartphone')}>
+        { isLoading
+          ? (<LoadingSmall />)
+          : (<BodyTableSmartphone film={infoFilm} />)
+        }
+      </div>
       { isErr && <ErrorMessageComponent message={isErrMessage} /> }
   </section>
   )
