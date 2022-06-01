@@ -1,6 +1,6 @@
-# GoogleBooksApi
+# StarWares
 <img src="demo/demo.png" alt="StarWares" width="550px">
-To test the applications <a target="_blank" href="http://web-projekt-1.net.pl/">Click here </a>
+To test the applications <a target="_blank" href="http://kk-projekt-2.net.pl/">Click here </a>
 
 # Built With
  - React
