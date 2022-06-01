@@ -8,6 +8,7 @@ import { RowInTableProps } from '../../../models/RowInTableProps';
 const style = bemCssModules(ColumnInTableStyles);
 
 const ColumnInTable: React.FC<RowInTableProps> = ({ item }) => {
+
   return (
     <tbody className={style()}>
       <tr>

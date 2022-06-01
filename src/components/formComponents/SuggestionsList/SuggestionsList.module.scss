@@ -2,7 +2,7 @@
 @import './../../../styles//variables';
 
 .container {
-  z-index: 999999!important;
+  z-index: 99999999!important;
   &__suggestionsWrapper {
   background-color: $white;
   border: 1px solid $borderGrey;
@@ -26,9 +26,10 @@
 }
 @media screen and (max-width: 343px) {
   .container {
+    width: 282px;
+    margin-left: 5px;
     &__suggestionsWrapper {
-      width: 282px;
+      width: 252px;
      }
-
   }
 }

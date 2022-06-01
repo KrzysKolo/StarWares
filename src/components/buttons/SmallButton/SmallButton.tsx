@@ -10,7 +10,7 @@ const style = bemCssModules(SmallButtonStyles);
 const SmallButton: React.FC<SmallButtonProps> = ({ title }) => {
 
   return (
-     <button className={style()}>{title}</button>
+     <button className={style()}>{ title }</button>
     )
  }
 

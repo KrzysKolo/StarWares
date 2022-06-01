@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllPlanetsApi, getPlanetsApi } from '../../features/planets/planetsSlice';
 import { changeVariantButton, isShowAddMovieChange, stateVariantButton, stateWindowAddMovie } from '../../features/windows/windowsSlice';
 //COMPONENTS
-import { BoxInput, BoxSearchInput, PlanetsList, SuggestionsList, ErrorMessage } from '../formComponents';
+import { BoxInput, BoxSearchInput, PlanetsList, SuggestionsList, ErrorMessage, BoxInputSmartphone } from '../formComponents';
 import { SmallButton, SmallButtonReadonly } from '../buttons';
 //REDUX
 import { getFilmsLocalStorage } from '../../features/filmsFromLocalStorage/filmsFromLocalStorageSlice';
@@ -142,7 +142,16 @@ const FormAddMovie: React.FC = () => {
                 isErrorTitle={isError}
                 photo=""
                 altPhoto=""
-              />
+               />
+              <BoxInputSmartphone
+                label="Movie tittle"
+                infoText='Return of the frontend'
+                value={titleMovie}
+                onChange={handleChangeValue}
+                isErrorTitle={isError}
+                photo=""
+                altPhoto=""
+               />
               {
                 isError &&
                   <ErrorMessage
